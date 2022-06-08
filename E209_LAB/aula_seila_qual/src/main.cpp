@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 int main(){
-  DDRD = 1<<PD5;
+  DDRD = 1<<PD6;
 
   TCCR0A = 0b10000001;
   TCCR0B = (1<<CS00);
@@ -15,7 +15,7 @@ int main(){
     ADCSRA |= (1<<ADSC);
 
     while(ADCSRA == (ADCSRA | (1<<ADSC))){
-      OCR0A = (ADC*1023)/255;
+      OCR0A = ADC*(255.0/1023.0);
     }
   }
   
